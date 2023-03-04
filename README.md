@@ -102,6 +102,7 @@ Browse to the [IAM](https://console.aws.amazon.com/iam) section in the console, 
 Then, click the **Add inline policy** link, switch to to the **JSON** tab, and paste the following inline policy:
 
 ```
+
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -125,8 +126,8 @@ Then, click the **Add inline policy** link, switch to to the **JSON** tab, and p
             ],
             "Effect": "Allow",
             "Resource": [
-              "arn:aws:lambda:*:*:function:ab-testing-api-*",
-              "arn:aws:lambda:*:*:layer:*"
+                "arn:aws:lambda:*:*:function:ab-testing-api-*",
+                "arn:aws:lambda:*:*:layer:*"
             ]
         },
         {
@@ -141,10 +142,7 @@ Then, click the **Add inline policy** link, switch to to the **JSON** tab, and p
                 "s3:*"
             ],
             "Effect": "Allow",
-            "Resource": [
-                "arn:aws:s3:::cdktoolkit-*",
-                "arn:aws:s3:::ab-testing-api-*"
-            ]
+            "Resource": "*"
         },
         {
             "Action": [
@@ -173,6 +171,22 @@ Then, click the **Add inline policy** link, switch to to the **JSON** tab, and p
         {
             "Effect": "Allow",
             "Action": [
+                "ssm:*"
+            ],
+            "Resource": [
+                "*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ecr:*"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
                 "iam:GetRole",
                 "iam:PassRole",
                 "iam:GetRolePolicy",
@@ -182,12 +196,14 @@ Then, click the **Add inline policy** link, switch to to the **JSON** tab, and p
                 "iam:DeleteRolePolicy"
             ],
             "Resource": [
-              "arn:aws:iam::*:role/ab-testing-api-*",
-              "arn:aws:iam::*:role/service-role/AmazonSageMaker*"
+                "arn:aws:iam::*:role/ab-testing-api-*",
+                "arn:aws:iam::*:role/service-role/AmazonSageMaker*"
             ]
         }
     ]
 }
+
+
 ```
 
 Click **Review policy** and provide the name `CDK-DeployPolicy` then click **Create policy**
