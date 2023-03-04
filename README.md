@@ -246,6 +246,17 @@ Resources include:
 Run the following command to deploy the MLOps project template, passing the required `ExecutionRoleArn` parameter.  You can copy this from your SageMaker Studio dashboard as show above.
 
 ```
+
+the best way to get the execution role is to use the following 
+
+from sagemaker import get_execution_role
+
+role = get_execution_role()
+print(role)
+
+Now, you need to do this on a jupyer sagemaker notebook or use  terminal to type python3 etc
+
+
 export EXECUTION_ROLE_ARN=<<sagemaker-studio-execution-role>>
 cdk deploy ab-testing-service-catalog \
     --parameters ExecutionRoleArn=$EXECUTION_ROLE_ARN \
