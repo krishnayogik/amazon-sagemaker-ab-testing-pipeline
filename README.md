@@ -247,14 +247,14 @@ Run the following command to deploy the MLOps project template, passing the requ
 
 ```
 
-the best way to get the execution role is to use the following 
+the best way to get the execution role of your sagemaker session ( without any confusion whatsoever ) is to do  the following 
+
+Open jupyter notebook on sagemaker studio , ( using terminal and python3 doesnt load sagemaker so you will get an error ) 
 
 from sagemaker import get_execution_role
-
 role = get_execution_role()
 print(role)
 
-Now, you need to do this on a jupyer sagemaker notebook or use  terminal to type python3 etc
 
 
 export EXECUTION_ROLE_ARN=<<sagemaker-studio-execution-role>>
